@@ -140,13 +140,15 @@ class SaleOrderLine(models.Model):
     def write(self, vals):
         """When the reward line is update we should refresh the line links as well"""
         res = super().write(vals)
-        if self.filtered(
+        # in case order line was removed, need this check to avoid CacheMiss
+        lines = self.exists()
+        if lines.filtered(
             lambda x: x.is_reward_line
             and x.loyalty_program_id
             and not x.reward_line_ids
         ):
-            programs = self.env["loyalty.program"].browse(self.loyalty_program_id.ids)
-            for order in self.mapped("order_id"):
+            programs = self.env["loyalty.program"].browse(lines.loyalty_program_id.ids)
+            for order in lines.mapped("order_id"):
                 order._link_reward_lines(programs)
         return res
 

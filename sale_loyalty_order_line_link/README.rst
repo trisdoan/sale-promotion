@@ -81,6 +81,9 @@ Contributors
 
   * Ilyas
 
+* `Trobz <https://www.trobz.com>`_:
+  * Tris Doan
+
 Maintainers
 ~~~~~~~~~~~
 

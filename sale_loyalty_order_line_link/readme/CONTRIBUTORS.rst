@@ -6,3 +6,6 @@
 * `Ooops404 <https://www.ooops404.com>`_:
 
   * Ilyas
+
+* `Trobz <https://www.trobz.com>`_:
+  * Tris Doan
